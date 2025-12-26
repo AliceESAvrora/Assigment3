@@ -1,13 +1,30 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Artist artist1 = new Artist("Lion Fox", "UK", 1991);
+        Artist artist2 = new Artist("Bonjour Boguette", "France", 1988);
+
+        Artwork artwork1 = new Painting("Fire in hole", 2016, 4500, artist1);
+        Artwork artwork2 = new Painting("Push mid", 2017, 690, artist1);
+        Artwork artwork3 = new Painting("I LOVE Paris", 2020, 1020, artist2);
+
+        ArtGallery gallery = new ArtGallery("London Art Gallery", "London");
+        gallery.addArtwork(artwork1);
+        gallery.addArtwork(artwork2);
+        gallery.addArtwork(artwork3);
+        System.out.println(artist1);
+        System.out.println(artwork1.getType());
+
+        System.out.println("All artworks:");
+        gallery.showAll();
+
+        System.out.print("Enter title to search: ");
+        String title = scanner.nextLine();
+
+        Artwork found = gallery.findByTitle(title);
+        System.out.println(found != null ? found : "Not found");
     }
 }
