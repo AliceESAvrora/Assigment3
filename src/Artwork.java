@@ -34,6 +34,7 @@ public abstract class Artwork {
     public String toString() {
         return getType() + ": " + title + " (" + year + "), $" + price + ", Artist: " + artist;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

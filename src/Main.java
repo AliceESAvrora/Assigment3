@@ -6,6 +6,9 @@ public class Main {
 
         Artist artist1 = new Artist("Lion Fox", "UK", 1991);
         Artist artist2 = new Artist("Bonjour Boguette", "France", 1988);
+        Artist artist3 = new Artist("Bonjour Boguette", "France", 1988);
+
+
 
         Artwork artwork1 = new Painting("Fire in hole", 2016, 4500, artist1);
         Artwork artwork2 = new Painting("Push mid", 2017, 690, artist1);
@@ -17,6 +20,10 @@ public class Main {
         gallery.addArtwork(artwork3);
         System.out.println(artist1);
         System.out.println(artwork1.getType());
+
+
+        System.out.println(artist2.equals(artist3));
+        gallery.sortByPrice();
 
         System.out.println("All artworks:");
         gallery.showAll();

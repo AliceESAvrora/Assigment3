@@ -39,7 +39,7 @@ public class ArtGallery {
 
     public void showAll() {
         for (Artwork a : artworks) {
-            System.out.println(a); // полиморфизм
+            System.out.println(a);
         }
     }
 }

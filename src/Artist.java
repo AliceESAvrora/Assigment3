@@ -1,3 +1,4 @@
+import javax.management.ObjectName;
 import java.util.Objects;
 
 public class Artist{
@@ -45,14 +46,17 @@ public class Artist{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Artist)) return false;
-        Artist artist = (Artist) o;
+    public boolean equals(Object a)
+    {
+        if (this == a) return true;
+        if (!(a instanceof Artist)) return false;
+        Artist artist = (Artist) a;
         return yearOfBirth == artist.yearOfBirth &&
-                Objects.equals(name, artist.name) &&
-                Objects.equals(country, artist.country);
+                Objects.equals(artist.name, name) &&
+                Objects.equals(artist.country, country);
     }
+
+
     @Override
     public int hashCode() {
         return Objects.hash(name, country, yearOfBirth);
