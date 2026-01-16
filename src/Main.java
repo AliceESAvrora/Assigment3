@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -21,6 +22,8 @@ public class Main {
         System.out.println(artist1);
         System.out.println(artwork1.getType());
 
+        artist1.testConnection();
+
 
         System.out.println(artist2.equals(artist3));
         gallery.sortByPrice();
@@ -33,5 +36,14 @@ public class Main {
 
         Artwork found = gallery.findByTitle(title);
         System.out.println(found != null ? found : "Not found");
+
+        System.out.print("Enter Artist to search: ");
+        String artistname = scanner.nextLine();
+        List<Artwork> result = gallery.filterByArtist(artistname);
+        for (Artwork a : result)
+        {
+            System.out.println(a);
+        }
+
     }
 }

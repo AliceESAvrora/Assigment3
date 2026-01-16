@@ -1,5 +1,6 @@
 import javax.management.ObjectName;
 import java.util.Objects;
+import java.sql.Connection;
 
 public class Artist{
     private String name;
@@ -16,11 +17,9 @@ public class Artist{
     public void alterName(String name) {
         this.name = name;
     }
-
     public void alterCountry(String country) {
         this.country = country;
     }
-
     public void alterYearOfBirth(int yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
     }
@@ -29,15 +28,21 @@ public class Artist{
     {
         return name;
     }
-
     public String getCountry()
     {
         return country;
     }
-
     public int getYearOfBirth()
     {
         return yearOfBirth;
+    }
+
+    public void testConnection() {
+        try (Connection conn = DB.getConnection()) {
+            System.out.println("Connection successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -51,11 +56,9 @@ public class Artist{
         if (this == a) return true;
         if (!(a instanceof Artist)) return false;
         Artist artist = (Artist) a;
-        return yearOfBirth == artist.yearOfBirth &&
-                Objects.equals(artist.name, name) &&
-                Objects.equals(artist.country, country);
+        return yearOfBirth == artist.yearOfBirth && Objects.equals(name, artist.name)
+                && Objects.equals(country, artist.country);
     }
-
 
     @Override
     public int hashCode() {

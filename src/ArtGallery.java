@@ -14,14 +14,17 @@ public class ArtGallery {
         artworks.add(artwork);
     }
 
-    public Artwork findByTitle(String title) {
+
+   public Artwork findByTitle(String title){
         for (Artwork a : artworks) {
-            if (a.getTitle().equalsIgnoreCase(title)) {
+            if (a.getTitle().equalsIgnoreCase(title))
+            {
                 return a;
             }
         }
         return null;
-    }
+   }
+
 
     public List<Artwork> filterByArtist(String artistName) {
         List<Artwork> result = new ArrayList<>();
