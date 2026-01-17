@@ -1,14 +1,22 @@
-import javax.management.ObjectName;
 import java.util.Objects;
-import java.sql.Connection;
+import java.sql.*;
 
 public class Artist{
+    private int artistId;
     private String name;
     private String country;
     private int yearOfBirth;
 
     public Artist(String name, String country, int yearOfBirth)
     {
+        this.name = name;
+        this.country = country;
+        this.yearOfBirth = yearOfBirth;
+    }
+
+    public Artist(int artistId, String name, String country, int yearOfBirth)
+    {
+        this.artistId = artistId;
         this.name = name;
         this.country = country;
         this.yearOfBirth = yearOfBirth;
@@ -24,6 +32,10 @@ public class Artist{
         this.yearOfBirth = yearOfBirth;
     }
 
+    public int getArtistId()
+    {
+        return artistId;
+    }
     public String getName()
     {
         return name;
@@ -37,17 +49,9 @@ public class Artist{
         return yearOfBirth;
     }
 
-    public void testConnection() {
-        try (Connection conn = DB.getConnection()) {
-            System.out.println("Connection successful");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public String toString() {
-        return name + " (" + country + ", " + yearOfBirth + ")";
+        return artistId + ": " + name + " (" + country + ", " + yearOfBirth + ")";
     }
 
     @Override
